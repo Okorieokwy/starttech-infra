@@ -1,62 +1,45 @@
-# starttech-application
+# starttech-infra
 
 ## Overview
-The StartTech Application is a full-stack project designed to demonstrate the integration of a React-based frontend, a Go-based backend, and Terraform-managed infrastructure. This project is structured to showcase modern development practices and deployment strategies.
+The `starttech-infra` directory contains Terraform configuration files for managing the infrastructure of the StartTech Application. This includes defining resources, variables, and outputs for provisioning and maintaining the application's infrastructure.
 
 ## Project Structure
-- **frontend/**: Contains the React client application.
-- **backend/**: Contains the Go server application.
-- **infra/**: Contains Terraform configuration files for infrastructure setup.
+- **main.tf**: Contains the primary Terraform configuration for resource provisioning.
+- **variables.tf**: Defines input variables for the Terraform configuration.
+- **outputs.tf**: Specifies the outputs of the Terraform configuration.
+- **terraform.tfvars**: Contains values for the input variables.
+- **terraform.tfstate**: Tracks the state of the infrastructure managed by Terraform.
+- **terraform.tfstate.backup**: Backup of the Terraform state file.
 
 ## Setup Instructions
 
 ### Prerequisites
-- Node.js and npm installed for the frontend.
-- Docker installed for the backend.
-- Terraform installed for infrastructure management.
+- Terraform installed on your system.
+- Proper access credentials for the cloud provider or infrastructure platform being used.
 
-### Frontend Setup
-1. Navigate to the `frontend` directory:
+### Steps
+1. Navigate to the `starttech-infra` directory:
    ```bash
-   cd starttech-application/client
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-### Backend Setup
-1. Navigate to the `backend` directory:
-   ```bash
-   cd starttech-application/backend
-   ```
-2. Build the Docker image:
-   ```bash
-   docker build -t starttech-backend .
-   ```
-3. Run the Docker container:
-   ```bash
-   docker run -p 8080:8080 starttech-backend
-   ```
-
-### Infrastructure Setup
-1. Navigate to the `infra` directory:
-   ```bash
-   cd starttech-infra-clean
+   cd starttech-infra
    ```
 2. Initialize Terraform:
    ```bash
    terraform init
    ```
-3. Apply the Terraform configuration:
+3. Validate the configuration:
+   ```bash
+   terraform validate
+   ```
+4. Plan the infrastructure changes:
+   ```bash
+   terraform plan
+   ```
+5. Apply the Terraform configuration:
    ```bash
    terraform apply
    ```
 
 ## Notes
-- Ensure all environment variables are properly configured before running the applications.
-- Refer to the respective `README.md` files in each subdirectory for more detailed instructions.
+- Ensure that the `terraform.tfvars` file contains the correct values for your environment.
+- Regularly back up the `terraform.tfstate` file to avoid losing the current state of your infrastructure.
+- Refer to the Terraform documentation for advanced usage and troubleshooting.
